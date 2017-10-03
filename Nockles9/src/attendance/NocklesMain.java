@@ -15,7 +15,7 @@ public class NocklesMain {
 	//note: in some cases, it is more information to store as actual type
 	private School school;
 	private NocklesLike like;
-	private Topic hello;
+	private NocklesHello hello;
 
 	public static void main(String[] args) {
 		input = new Scanner(System.in);
@@ -227,6 +227,9 @@ public class NocklesMain {
 		return like;
 	}
 
+	public NocklesHello getHello() {
+		return hello;
+	}
 
 
 

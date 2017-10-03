@@ -36,6 +36,12 @@ public class NocklesHello implements Topic{
 		}
 	}
 
+	public void printMoodyString() {
+		if(helloCount > 4) {
+			NocklesMain.print("...I'm so glad we are getting past the introduction. That went on way too long.");
+		}
+	}
+	
 	private void printResponse() {
 		int responseIndex = 0;
 		//calm response

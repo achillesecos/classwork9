@@ -42,6 +42,7 @@ public class NocklesLike implements Topic{
 				NocklesMain.print("You are such an "
 						+ "interesting"
 						+ " person, because you like "+thingsLiked+".");
+				NocklesMain.chatbot.getHello().printMoodyString();
 				if(NocklesMain.findKeyword(thingsLiked, 
 						"school", 0) >= 0){
 					inLikeLoop = false;
