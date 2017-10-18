@@ -6,16 +6,69 @@ public class ArraysMain {
 
 	private String[] suits;
 	private String[] values;
-	
+
 	public ArraysMain() {
-		tuesdayMethods();
+		wednesdayMethods();
 	}
-	
-	private void tuesdayMethods() {
-		int[] orderTest = {1,2,3,4,5,1,6,7,8,9,10,11};
-//		cycleThrough(orderTest, 5);
-//		System.out.println(Arrays.toString(orderTest));
-		System.out.println(longestConsecutiveSequence(orderTest) + " is the l.c.s. it should be 6");
+
+	private void wednesdayMethods() {
+		int[] diceRolls = new int[10000];
+		populate(diceRolls);
+		int[] data = longestConsecutiveSeqAndIndex(diceRolls);
+		int max = 1;
+		int longest = data[0];
+		System.out.println("The longest sequence is " + 
+				longest + " rolls. It happened on roll #"+data[1]+
+				" the sequence was: "
+				+ Arrays.toString(subArray(diceRolls, 
+						data[1], data[0]))+".");
+		while(longest != 11) {
+			populate(diceRolls);
+			data = longestConsecutiveSeqAndIndex(diceRolls);
+			longest = data[0];
+			if(longest > max) {
+				max = longest;
+				System.out.println("The longest sequence is " + 
+						longest + " rolls. It happened on roll #"+data[1]+
+						" the sequence was: "
+						+ Arrays.toString(subArray(diceRolls, 
+								data[1], data[0]))+".");
+			}
+		}
+	}
+
+
+
+	/**
+	 * BIG IDEA:
+	 * Usually a method returns ONE piece of data (i.e. 'int', 'boolean', etc)
+	 * IF we ever want more than one piece of data, one way of doing that
+	 * is by using an array, as you see here, a method that returns the LENGTH 
+	 * of the sequence and its START position (both ints)
+	 * @param arr
+	 * @return
+	 */
+	private int[] longestConsecutiveSeqAndIndex(int[] arr) {
+		//use an int[] to store the data
+		int[] data = new int[2];//element at zero is length, at 1 is position
+
+
+		data[0] = 1;
+		int currentCount = 1;
+		for(int i = 0; i < arr.length; i++) {
+			while(i + currentCount < arr.length && 
+					isConsecutive(arr, i, i+currentCount)) {
+				currentCount++;
+			}
+			if(currentCount > data[0]) {
+				data[0] = currentCount;
+				//also store the index where this sequence started
+				data[1] = i;
+			}
+			i = i + currentCount-1;//saves time
+			currentCount = 1;
+		}
+		return data;
 	}
 
 	/**
@@ -42,7 +95,17 @@ public class ArraysMain {
 		}
 		return maxLength;
 	}
-	
+
+
+	private void tuesdayMethods() {
+		int[] orderTest = {1,2,3,4,5,1,6,7,8,9,10,11};
+		//		cycleThrough(orderTest, 5);
+		//		System.out.println(Arrays.toString(orderTest));
+		System.out.println(longestConsecutiveSequence(orderTest) + " is the l.c.s. it should be 6");
+	}
+
+
+
 	/**
 	 * returns true if all of the elements from start to end are increasing by 1
 	 * example: 
@@ -60,17 +123,17 @@ public class ArraysMain {
 		}
 		return true;
 	}
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * The element at index 0 moves to the last position in the array as all
 	 * other elements move forward. This must happen exactly n times.
 	 */
 	private void cycleThrough(int[] orderTest, int n) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -82,7 +145,7 @@ public class ArraysMain {
 	 * @return
 	 */
 	private void frontToBack(int[] arr) {
-		
+
 	}
 
 	private void warmUpMethods() {
@@ -119,7 +182,7 @@ public class ArraysMain {
 		values[10] = "Jack";
 		printDeck();
 	}
-	
+
 	private String[] printDeck() {
 		String[] deck = new String[52];
 		int index = 0;
@@ -183,10 +246,10 @@ public class ArraysMain {
 			arr[i] = diceRoll(3);
 		}
 		//incorrect way (does nothing):
-//		for(int value: arr) {
-//			value = diceRoll(2);
-//		}
-		
+		//		for(int value: arr) {
+		//			value = diceRoll(2);
+		//		}
+
 	}
 
 	public void arrayNotes() {
@@ -194,13 +257,13 @@ public class ArraysMain {
 		int[] firstWay = {0,1,2,3,4,5};
 		//this way will only work with the declaration.
 		//will not work:
-//		firstWay = {6,7,8,9,10};
-		
+		//		firstWay = {6,7,8,9,10};
+
 		String[] secondWay = new String[5];
 		//you can go on like so, creating values at each index:
-//		secondWay[0] = 1;
-//		secondWay[1] = 10;
-		
+		//		secondWay[0] = 1;
+		//		secondWay[1] = 10;
+
 		//TWO WAYS TO ITERATE THROUGH AN ARRAY:
 		for(int i = 0; i < secondWay.length; i++) {
 			System.out.println("The #"+i+" element is "+secondWay[i]);
@@ -217,15 +280,15 @@ public class ArraysMain {
 		ArraysMain sample = new ArraysMain();
 		//1. Arrays are collections of primitives and Objects
 		//SPECIAL NOTE: This is the ONLY collection of primitives
-		
+
 		//2. Size cannot be edited
-		
+
 		/*3. Elements of an array are REFERENCES to objects. In 
 		 * other words, changing an element of an array changes the reference, 
 		 * not the object.
 		 */
 	}
-	
+
 	/**
 	 * returns the result after rolling n number of dice
 	 * @param n
