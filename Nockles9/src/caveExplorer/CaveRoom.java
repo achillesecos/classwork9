@@ -139,6 +139,16 @@ public class CaveRoom {
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 		
+		CaveRoom[][][] layers = new CaveRoom[3][][];
+		layers[0] = new CaveRoom[3][4];
+		//make doors lock after you walk in
+		//teleport to a different room
+		//make map dark
+		//make  a boss follow you (spawn after entry)
+		//moving up and down (3D array, i.e. make a starway room)
+		
+		
+		
 	}
 	
 	public void goToRoom(int direction) {
