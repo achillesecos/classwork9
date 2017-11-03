@@ -4,7 +4,7 @@ public class Chatbot {
 
 	private String username;
 	private boolean chatting;
-	private Topic ben;
+	private Topic ben;//comment
 	
 	public Chatbot() {
 		ben = new ChatbotBen();
