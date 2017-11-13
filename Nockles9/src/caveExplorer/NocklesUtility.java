@@ -52,6 +52,7 @@ public class NocklesUtility {
 			}
 			list += " or "+letters.substring(letters.length()-1); 
 			System.out.println(list);
+			input = CaveExplorer.in.nextLine();
 		}
 		return input.toLowerCase().substring(0, 1);
 	}
