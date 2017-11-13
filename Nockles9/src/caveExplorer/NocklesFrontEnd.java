@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import java.util.Scanner;
+
 public class NocklesFrontEnd implements BenSupporter{
 
 	private NocklesSupporter backend;
@@ -14,6 +16,7 @@ public class NocklesFrontEnd implements BenSupporter{
 
 	public NocklesFrontEnd() {
 		backend = new BenBackEnd(this);
+		CaveExplorer.in = new Scanner(System.in);
 		digs = 6;
 		newHint = null;
 	}
