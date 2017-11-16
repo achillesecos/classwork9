@@ -159,6 +159,10 @@ public class CaveRoom {
 			}
 		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
+		CaveRoom customRoom1 = new BenRoom("Text");
+		CaveExplorer.caves[2][3] = customRoom1;
+		
+		
 		NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
 		CaveExplorer.npcs = new NPC[1];
