@@ -1,5 +1,6 @@
 package caveExplorer;
 
+<<<<<<< HEAD
 public class NocklesFrontEnd implements BenSupporter{
 
 	private NocklesSupporter backend;
@@ -14,6 +15,25 @@ public class NocklesFrontEnd implements BenSupporter{
 
 	public NocklesFrontEnd() {
 		backend = new BenBackEnd(this);
+=======
+import java.util.Scanner;
+
+public class NocklesFrontEnd implements BenSupporter{
+
+	private NocklesSupporter backend;
+	private int digs;
+	private String newHint;
+
+
+	public static final void main(String[] args){
+		NocklesFrontEnd demo = new NocklesFrontEnd();
+		demo.play();
+	}
+
+	public NocklesFrontEnd() {
+		backend = new BenBackEnd(this);
+		CaveExplorer.in = new Scanner(System.in);
+>>>>>>> refs/remotes/origin/master
 		digs = 6;
 		newHint = null;
 	}
